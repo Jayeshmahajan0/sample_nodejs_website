@@ -21,8 +21,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Lint/Test (Optional)
-        run: echo "No tests yet"
+      - name: Run route tests
+        run: npm test 
 
       - name: Notify Render
         run: echo "Render auto-deploys on push. No deploy step needed."
