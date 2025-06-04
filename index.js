@@ -1,9 +1,11 @@
 import express from "express";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static("public"));
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
@@ -16,6 +18,10 @@ app.get("/contact", (req, res) => {
   res.render("contact.ejs");
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
+export default app;
